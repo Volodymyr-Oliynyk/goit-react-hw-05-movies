@@ -1,13 +1,13 @@
 import { axiosApi } from './api';
 import { toast } from 'react-toastify';
 
-const getTrendingMovies = async () => {
+const getSearchMovies = async query => {
   try {
-    const { data } = await axiosApi.get('/trending/movie/day');
+    const { data } = await axiosApi.get(`/search/movie?query=${query}`);
     return data;
   } catch (error) {
     toast.error(`Oops, an error occurred! ${error}`);
   }
 };
 
-export default getTrendingMovies;
+export default getSearchMovies;

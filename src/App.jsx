@@ -1,30 +1,28 @@
-import { Routes, Route, NavLink } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import SharedLayout from 'layout/SharedLayout';
+import { LoaderSpiner } from 'components/common/Loader/Loader';
 
-import { Home } from './pages/Home';
-import { Movies } from './pages/Movies';
-import styled from 'styled-components';
-
-const StyledLink = styled(NavLink)`
-  color: black;
-  margin-right: 10px;
-
-  &.active {
-    color: orange;
-  }
-`;
+const Home = lazy(() => import('pages/Home/Home'));
+const Movies = lazy(() => import('pages/Movies/Movies'));
+const MovieDetailes = lazy(() => import('pages/MovieDetailes/MovieDetailes'));
+const Cast = lazy(() => import('pages/MovieDetailes/Cast/Cast'));
+const Reviews = lazy(() => import('pages/MovieDetailes/Reviews/Reviews'));
 
 export const App = () => {
   return (
-    <div>
-      <nav>
-      <StyledLink to="/">Home</StyledLink>
-      <StyledLink to="/movies">Movies</StyledLink>
-
-      </nav>
+    <Suspense fallback={<LoaderSpiner />}>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<Movies />} />
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Home />} />
+          <Route path="movies" element={<Movies />} />
+          <Route path="movies/:movieId" element={<MovieDetailes />}>
+            <Route path="credits" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+          <Route path="*" element={<Home />} />
+        </Route>
       </Routes>
-    </div>
+    </Suspense>
   );
 };

@@ -1,29 +1,45 @@
 import { Link, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const List = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  list-style: none;
+`;
+const Item = styled.li`
+margin-bottom: 10px;
+`;
 
 const MoviesList = ({ movies }) => {
   const location = useLocation();
 
   return (
-    <ul>
-      {movies.map(movie => {
+    <List>
+      {movies.map(({ id, poster_path }) => {
         return (
-          <li key={movie.id}>
-            <Link to={`/movie/${movie.id}`} state={{ from: location }}>
+          <Item key={id}>
+            <Link to={`/movie/${id}`} state={{ from: location }}>
               <img
                 src={
-                  movie.poster_path
-                    ? `https://image.tmdb.org/t/p/w500` + movie.poster_path
-                    : 'https://dummyimage.com/309x449/fff/000000.png&text=%D0%9A%D1%96%D0%BD%D0%B0+%D0%BD%D0%B5+%D0%B1%D1%83%D0%B4%D0%B5!'
+                  poster_path
+                    ? `https://image.tmdb.org/t/p/w300` + poster_path
+                    : 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg'
                 }
-                alt={movie.title}
+                alt=""
               />
             </Link>
-            <p>{movie.title}</p>
-          </li>
+            {/* <p>{movie.title}</p> */}
+          </Item>
         );
       })}
-    </ul>
+    </List>
   );
 };
 
 export default MoviesList;
+
+MoviesList.propTypes = {
+  movies: PropTypes.array.isRequired,
+};

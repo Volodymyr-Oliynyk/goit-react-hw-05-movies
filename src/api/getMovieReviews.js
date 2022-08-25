@@ -1,13 +1,13 @@
 import { axiosApi } from './api';
 import { toast } from 'react-toastify';
 
-const getTrendingMovies = async () => {
+const getMovieReviews = async id => {
   try {
-    const { data } = await axiosApi.get('/trending/movie/day');
-    return data;
+    const response  = await axiosApi.get(`/movie/${id}/reviews`);
+    return response ;
   } catch (error) {
     toast.error(`Oops, an error occurred! ${error}`);
   }
 };
 
-export default getTrendingMovies;
+export default getMovieReviews;

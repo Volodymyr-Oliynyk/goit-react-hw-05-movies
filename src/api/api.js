@@ -1,11 +1,10 @@
 import axios from 'axios';
 import { BASE_URL, API_KEY } from '../constants/ApiConst';
 
-const api = axios.create({
+export const axiosApi = axios.create({
   baseURL: BASE_URL,
-  pararms: {
+  params: {
     api_key: API_KEY,
   },
 });
-
-export default api;
+  
