@@ -1,5 +1,6 @@
+import { LoaderSpiner } from 'components/common/Loader/Loader';
 import MovieInfo from 'components/MovieInfo';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
 import getMovieDetails from '../../api/getMovieDetails';
 
@@ -16,16 +17,24 @@ const MovieDetailes = () => {
   }, [movieId]);
 
   return (
-    <>
-      <Link to={location}>Back </Link>
-      <div>
-        <MovieInfo movie={movieInfo} />
-              <Link to="credits" state={{ from: location }}>
-          Cast
-        </Link>
-        <Outlet />
-      </div>
-    </>
+    <div>
+      <Link to={location}>Back to movies</Link>
+      {movieInfo && (
+        <div>
+          <MovieInfo movie={movieInfo} />
+          <p>Addictional information:</p>
+          <Link to="credits" state={{ from: location }}>
+            Cast
+          </Link>
+          <Link to="reviews" state={{ from: location }}>
+            Reviews
+          </Link>
+          <Suspense fallback={<LoaderSpiner />}>
+            <Outlet />
+          </Suspense>
+        </div>
+      )}
+    </div>
   );
 };
 

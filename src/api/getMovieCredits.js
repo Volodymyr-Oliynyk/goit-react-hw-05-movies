@@ -1,7 +1,7 @@
 import { axiosApi } from './api';
 import { toast } from 'react-toastify';
 
-const getMovieDetails = async (id) => {
+const getMovieDetails = async id => {
   try {
     const { data } = await axiosApi.get(`/movie/${id}/credits`);
     return data;
