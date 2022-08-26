@@ -1,3 +1,4 @@
+// import ReviewsList from 'components/ReviewsList';
 import ReviewsList from 'components/ReviewsList';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
@@ -8,12 +9,12 @@ const Reviews = () => {
   const { moviedId } = useParams();
 
   useEffect(() => {
-    getMovieReviews(moviedId).then(result => {
-      setReviews(result.data.results);
+    getMovieReviews(moviedId).then(data => {
+      setReviews(data.results);
     });
   });
 
-  return <div>{reviews.length > 0 && <ReviewsList reviews={reviews} />}</div>;
+  return (<div>{reviews && <ReviewsList reviews={reviews} />}</div>);
 };
 
 export default Reviews;

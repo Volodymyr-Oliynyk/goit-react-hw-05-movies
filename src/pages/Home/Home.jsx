@@ -6,10 +6,8 @@ const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
 
   useEffect(() => {
-    getTrendingMovies().then(( result ) => {
-      const {results} = result;
+    getTrendingMovies().then(({ results }) => {
       setTrendingMovies(results);
-      console.log(results);
     });
   }, []);
 

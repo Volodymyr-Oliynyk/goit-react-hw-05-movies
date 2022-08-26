@@ -1,10 +1,27 @@
+import styled from 'styled-components';
+
+const List = styled.ul`
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+`;
+
+const Image = styled.img`
+  width: 150px;
+  height: 200px;
+  border-radius: 4px;
+`;
+
 const CastList = ({ credits }) => {
   return (
-    <ul>
+    <List>
       {credits.map(({ id, profile_path, name }) => {
         return (
           <li key={id}>
-            <img
+            <Image
               src={
                 profile_path
                   ? 'https://image.tmdb.org/t/p/w500' + profile_path
@@ -16,7 +33,7 @@ const CastList = ({ credits }) => {
           </li>
         );
       })}
-    </ul>
+    </List>
   );
 };
 
