@@ -9,7 +9,7 @@ const Item = styled.li`
 `;
 
 const ReviewsList = ({ reviews }) => {
-  return reviews.length < 0 ? (
+  return reviews.length > 0 ? (
     <ul>
       {reviews.map(({ id, author, content }) => {
         return (

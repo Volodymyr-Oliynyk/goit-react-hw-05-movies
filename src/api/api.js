@@ -7,4 +7,3 @@ export const axiosApi = axios.create({
     api_key: API_KEY,
   },
 });
-  

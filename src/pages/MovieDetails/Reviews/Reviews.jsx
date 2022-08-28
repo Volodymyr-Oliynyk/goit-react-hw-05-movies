@@ -6,13 +6,13 @@ import getMovieReviews from '../../../api/getMovieReviews';
 
 const Reviews = () => {
   const [reviews, setReviews] = useState();
-  const { moviedId } = useParams();
+  const { movieId } = useParams();
 
   useEffect(() => {
-    getMovieReviews(moviedId).then(data => {
+    getMovieReviews(movieId).then(({data}) => {
       setReviews(data.results);
     });
-  });
+  }, [movieId]);
 
   return <>{reviews && <ReviewsList reviews={reviews} />}</>;
 };

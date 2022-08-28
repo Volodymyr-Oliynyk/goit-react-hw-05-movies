@@ -6,8 +6,8 @@ const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  list-style: none;
 `;
+
 const Item = styled.li`
   margin-bottom: 10px;
 `;
