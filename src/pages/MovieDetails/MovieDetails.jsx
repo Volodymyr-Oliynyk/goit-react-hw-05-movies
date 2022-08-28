@@ -4,11 +4,12 @@ import { LoaderSpiner } from 'components/common/Loader/Loader';
 import MovieInfo from 'components/MovieInfo';
 import getMovieDetails from '../../api/getMovieDetails';
 import styled from 'styled-components';
+import MoviesDetailsAction from 'components/MovieDetailsAction/MovieDetailsAction';
 
 const Cotainer = styled.div`
   padding: 10px 20px;
-`
-const MovieDetailes = () => {
+`;
+const MovieDetails = () => {
   const [movieInfo, setMovieInfo] = useState();
   const { movieId } = useParams();
 
@@ -23,24 +24,12 @@ const MovieDetailes = () => {
   return (
     <Cotainer>
       <Link to={location}> ← Back to movies</Link>
-      
+
       {movieInfo && (
         <>
           <MovieInfo movie={movieInfo} />
           <p>Addictional information:</p>
-          <ul>
-            <li>
-              <Link to="credits" state={{ from: location }}>
-                Cast
-              </Link>
-            </li>
-            <li>
-              <Link to="reviews" state={{ from: location }}>
-                Reviews
-              </Link>
-            </li>
-          </ul>
-
+          <MoviesDetailsAction />
           <Suspense fallback={<LoaderSpiner />}>
             <Outlet />
           </Suspense>
@@ -50,4 +39,4 @@ const MovieDetailes = () => {
   );
 };
 
-export default MovieDetailes;
+export default MovieDetails;

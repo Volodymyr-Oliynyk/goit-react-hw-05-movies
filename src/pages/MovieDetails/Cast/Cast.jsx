@@ -8,11 +8,11 @@ const Cast = () => {
   const { movieId } = useParams();
 
   useEffect(() => {
-    getMovieCredits(movieId).then(({cast}) => {
+    getMovieCredits(movieId).then(({ cast }) => {
       setCredits(cast);
     });
   }, [movieId]);
-  return <div>{credits && <CastList credits={credits} />}</div>;
+  return <>{credits && <CastList credits={credits} />}</>;
 };
 
 export default Cast;

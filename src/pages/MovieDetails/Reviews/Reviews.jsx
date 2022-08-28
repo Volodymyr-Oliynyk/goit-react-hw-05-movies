@@ -14,7 +14,7 @@ const Reviews = () => {
     });
   });
 
-  return (<div>{reviews && <ReviewsList reviews={reviews} />}</div>);
+  return <>{reviews && <ReviewsList reviews={reviews} />}</>;
 };
 
 export default Reviews;

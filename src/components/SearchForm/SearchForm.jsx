@@ -1,6 +1,6 @@
+import SearchButton from 'components/common/SearchButton';
 import { Formik } from 'formik';
 import { SearchingForm, SearchFormInput } from './SearchForm.styled';
-import SearchButton from 'components/SearchButton';
 
 const SearchForm = ({ onSubmit, value }) => {
   return (

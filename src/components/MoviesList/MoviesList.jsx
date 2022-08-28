@@ -9,7 +9,7 @@ const List = styled.ul`
   list-style: none;
 `;
 const Item = styled.li`
-margin-bottom: 10px;
+  margin-bottom: 10px;
 `;
 
 const MoviesList = ({ movies }) => {
@@ -24,10 +24,10 @@ const MoviesList = ({ movies }) => {
               <img
                 src={
                   poster_path
-                    ? `https://image.tmdb.org/t/p/w300` + poster_path
+                    ? `https://image.tmdb.org/t/p/w500` + poster_path
                     : 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg'
                 }
-                alt=""
+                alt={''}
               />
             </Link>
             {/* <p>{movie.title}</p> */}
