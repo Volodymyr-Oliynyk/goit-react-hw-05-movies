@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import getTrendingMovies from '../api/getTrendingMovies';
+import getTrendingMovies from 'api/getTrendingMovies';
 import MoviesList from 'components/MoviesList';
 
 const Home = () => {
